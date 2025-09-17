@@ -1,33 +1,9 @@
 const express = require("express");
 const app = express();
-app.post("/user/signup",function(req,res){
-    res.json({
-        msg:"function"
-    })
-})
+const { userRouter } = require("./user");
+const { courseRouter } = require("./course");
+app.use("/user",userRouter);
+app.use("/course",courseRouter);
 
-app.post("/user/signin",function(req,res){
-    res.json({
-        msg:"function"
-    })
-})
-
-app.get("/purchases",function(req,res){
-    res.json({
-        msg:"function"
-    })
-})
-
-app.post("/course/purchase",function(req,res){
-    res.json({
-        msg:"function"
-    })
-})
-
-
-app.get("/courses",function(req,res){
-    res.json({
-        msg:"function"
-    })
-})
+app.listen(3000);
 
