@@ -1,4 +1,4 @@
-const {Router} = require("expres");
+const {Router} = require("express");
 
 const courseRouter = Router();
     courseRouter.post("/course/purchase",function(req,res){
@@ -15,5 +15,5 @@ const courseRouter = Router();
 })
 
 module.exports = {
-      courseRouter : courseRouters
+      courseRouter : courseRouter
 }
