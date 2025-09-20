@@ -2,13 +2,20 @@ const {Router} = require("express")
 const userRouter = Router();
 const {userModel}=require("./db")
 
-    userRouter.post("/user/signup",function(req,res){
+    userRouter.post("/signup",async function(req,res){
+        const { email,password,firstName,lastname}=req.body;
+        await userModel.create({
+            email:email,
+            password:password,
+            firstName:firstName,
+            lastName:lastname
+        })
     res.json({
-        msg:"function"
+        msg:"signup suceeded"
     })
 })
 
-    userRouter.post("/user/signin",function(req,res){
+    userRouter.post("/signin",function(req,res){
     res.json({
         msg:"function"
     })
