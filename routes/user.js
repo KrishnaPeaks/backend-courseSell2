@@ -18,7 +18,7 @@ const JWT_USER_PASSWORD = "123passforuser"
 })
 
     userRouter.post("/signin",async function(req,res){
-        const {email,body} = req.body;
+        const {email,password} = req.body;
         const user = await userModel.findOne({
             email:email,
             password:password
