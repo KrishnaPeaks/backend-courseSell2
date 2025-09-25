@@ -48,15 +48,28 @@ const {JWT_ADMIN_PASSWORD} = require("../config.js")
     })
 })
 
-adminRouter.put("/course",function(req,res){
+adminRouter.put("/course",adminMiddlewear,async function(req,res){
+     const adminId = req.userId;
+        const {title,description,imageUrl,price} = req.body;
+        const course = await courseModel.updateOne({
+            _id: courseId,
+            creatorId : adminId},{
+            title,description,imageUrl,price,creatorId:adminId
+        })
     res.json({
-        msg:"function"
+        msg:"course updated",
+        courseId: course._id 
     })
 })
 
-adminRouter.get("/course/bulk",function(req,res){
+adminRouter.get("/course/bulk",adminMiddlewear,async function(req,res){
+    const adminId = req.userId;
+    const courses = await courseModel.find({
+        creatorId: adminId
+    }); 
     res.json({
-        msg:"function"
+        msg:"function",
+        courses
     })
 })
 
